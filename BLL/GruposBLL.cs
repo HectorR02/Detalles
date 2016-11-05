@@ -117,7 +117,7 @@ namespace BLL
             {
                 try
                 {
-                    UltGr = conexion.Grupo.MaxAsync()
+                    //UltGr = conexion.Grupo.MaxAsync()
                 }
                 catch (Exception)
                 {
