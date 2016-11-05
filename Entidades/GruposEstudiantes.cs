@@ -15,5 +15,6 @@ namespace Entidades
         public int GrupoId { get; set; }
 
         public int EstudianteId { get; set; }
+
     }
 }

@@ -14,19 +14,19 @@ namespace Entidades
 
         public string Nombre { get; set; }
 
-        public virtual List<Estudiantes> Estudiantes { get; set; }
+        //public virtual List<Estudiantes> Estudiantes { get; set; }
 
         public Grupos()
         {
             
-            this.Estudiantes = new List<Estudiantes>();
+           // this.Estudiantes = new List<Estudiantes>();
         }
 
         public Grupos(int grupoId, string nombreGrupo)
         {
             this.GrupoId = grupoId;
             this.Nombre = nombreGrupo;
-            this.Estudiantes = new List<Entidades.Estudiantes>();
+           // this.Estudiantes = new List<Entidades.Estudiantes>();
         }
     }
 }
