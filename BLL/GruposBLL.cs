@@ -3,6 +3,9 @@ using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BLL
@@ -110,14 +113,15 @@ namespace BLL
             return resultado;
         }
 
-        public static int UltimoGrupo()
+        public static int UltimoId()
         {
-            int UltGr = 0;
+            int UltId = 0;
             using (var conexion = new DetallesDB())
             {
                 try
                 {
-                    //UltGr = conexion.Grupo.MaxAsync()
+                    if(Buscar(1) != null)
+                        UltId = conexion.Grupo.Max(Id => Id.GrupoId);
                 }
                 catch (Exception)
                 {
@@ -125,7 +129,7 @@ namespace BLL
                     throw;
                 }
             }
-            return UltGr;
+            return UltId;
         }
 
     }

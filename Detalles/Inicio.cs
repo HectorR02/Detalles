@@ -35,8 +35,19 @@ namespace Detalles
 
         private void gruposToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            LimpiarContenedor();
-            var RegGrupos = new RegistroGrupos();
+            Form RegGrupos;
+            if (BLL.EstudiantesBLL.UltimoId() > 0)
+            {
+                LimpiarContenedor();
+                RegGrupos = new RegistroGrupos();
+            }
+            else
+            {
+                LimpiarContenedor();
+                MessageBox.Show("Aun no se ha registrado ningun estudiante antes de crear"+
+                    " un grupo debe haber algun estudiante en la base de dato", "-- Aviso --", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RegGrupos = new RegistroEstudiantes();
+            }
             RegGrupos.MdiParent = this;
             RegGrupos.Show();
         }

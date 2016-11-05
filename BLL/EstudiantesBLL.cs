@@ -4,8 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BLL
@@ -138,7 +136,8 @@ namespace BLL
             {
                 try
                 {
-                    UltId = conexion.Estudiante.Max(Id => Id.EstudianteId);
+                    if(Buscar(1) != null)
+                        UltId = conexion.Grupo.Max(Id => Id.GrupoId);
                 }
                 catch (Exception)
                 {

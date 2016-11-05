@@ -24,7 +24,7 @@ namespace Detalles
             EstudiatesComboBox.DataSource = BLL.EstudiantesBLL.GetList();
             EstudiatesComboBox.ValueMember = "EstudianteId";
             EstudiatesComboBox.DisplayMember = "Nombres";
-            
+            CleanCampos();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -98,6 +98,7 @@ namespace Detalles
             NombresTextBox.Clear();
             estudiantes = new List<Estudiantes>();
             EstudiantesDataGridView.DataSource = null;
+            IdTextBox.Text = (BLL.GruposBLL.UltimoId() + 1).ToString();
             IdTextBox.Focus();
         }
 
