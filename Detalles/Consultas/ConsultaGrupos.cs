@@ -21,9 +21,6 @@ namespace Detalles
             InitializeComponent();
             estudiantes = new List<Estudiantes>();
             GrupoEstudiante = new List<GruposEstudiantes>();
-            EstudiatesComboBox.DataSource = BLL.EstudiantesBLL.GetList();
-            EstudiatesComboBox.ValueMember = "EstudianteId";
-            EstudiatesComboBox.DisplayMember = "Nombres";
             CleanCampos();
         }
 
@@ -77,32 +74,32 @@ namespace Detalles
 
         private void AgregarButton_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(IdTextBox.Text))
-                if (!string.IsNullOrEmpty(NombresTextBox.Text))
-                {
-                    int IdGrupo;
-                    int.TryParse(IdTextBox.Text, out IdGrupo);
-                    estudiantes.Add(BLL.EstudiantesBLL.Buscar((int)EstudiatesComboBox.SelectedValue));
-                    GrupoEstudiante.Add(new GruposEstudiantes()
-                    {
-                        Id = 1,
-                        EstudianteId = (int)EstudiatesComboBox.SelectedValue,
-                        GrupoId = IdGrupo
-                    });
-                    EstudiantesDataGridView.DataSource = null;
-                    EstudiantesDataGridView.DataSource = estudiantes;
-                }
-                else
-                {
-                    MessageBox.Show(this, "No Puedes dejar campos vacíos", "-- AVISO --", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    if (string.IsNullOrEmpty(NombresTextBox.Text))
-                        NombresTextBox.Focus();
-                    else
-                    {
-                        IdTextBox.Text = (BLL.GruposBLL.UltimoId() + 1).ToString();
-                        IdTextBox.Focus();
-                    }
-                }
+            //if (!string.IsNullOrEmpty(IdTextBox.Text))
+            //    if (!string.IsNullOrEmpty(NombresTextBox.Text))
+            //    {
+            //        int IdGrupo;
+            //        int.TryParse(IdTextBox.Text, out IdGrupo);
+            //        estudiantes.Add(BLL.EstudiantesBLL.Buscar((int)EstudiatesComboBox.SelectedValue));
+            //        GrupoEstudiante.Add(new GruposEstudiantes()
+            //        {
+            //            Id = 1,
+            //            EstudianteId = (int)EstudiatesComboBox.SelectedValue,
+            //            GrupoId = IdGrupo
+            //        });
+            //        EstudiantesDataGridView.DataSource = null;
+            //        EstudiantesDataGridView.DataSource = estudiantes;
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show(this, "No Puedes dejar campos vacíos", "-- AVISO --", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //        if (string.IsNullOrEmpty(NombresTextBox.Text))
+            //            NombresTextBox.Focus();
+            //        else
+            //        {
+            //            IdTextBox.Text = (BLL.GruposBLL.UltimoId() + 1).ToString();
+            //            IdTextBox.Focus();
+            //        }
+            //    }
             
         }
 
