@@ -113,6 +113,24 @@ namespace BLL
             return resultado;
         }
 
+        public static List<Grupos> GetList()
+        {
+            var lista = new List<Grupos>();
+            using (var conexion = new DetallesDB())
+            {
+                try
+                {
+                    lista = conexion.Grupo.ToList();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+            return lista;
+        }
+
         public static int UltimoId()
         {
             int UltId = 0;
@@ -120,7 +138,7 @@ namespace BLL
             {
                 try
                 {
-                    if(Buscar(1) != null)
+                    if(GetList().Count() > 0)
                         UltId = conexion.Grupo.Max(Id => Id.GrupoId);
                 }
                 catch (Exception)

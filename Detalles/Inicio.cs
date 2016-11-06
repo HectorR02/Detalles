@@ -36,20 +36,66 @@ namespace Detalles
         private void gruposToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Form RegGrupos;
-            if (BLL.EstudiantesBLL.UltimoId() > 0)
+            if (BLL.EstudiantesBLL.GetList() != null)
             {
                 LimpiarContenedor();
-                RegGrupos = new RegistroGrupos();
+                RegGrupos = new ConsultaGrupos();
             }
             else
             {
                 LimpiarContenedor();
                 MessageBox.Show("Aun no se ha registrado ningun estudiante antes de crear"+
                     " un grupo debe haber algun estudiante en la base de dato", "-- Aviso --", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                RegGrupos = new RegistroEstudiantes();
+                RegGrupos = new ConsultaEstudiantes();
             }
             RegGrupos.MdiParent = this;
             RegGrupos.Show();
+        }
+
+        private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void estudiantesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form Registro = new Form();
+            if (BLL.EstudiantesBLL.GetList().Count() > 0)
+                Registro = new ConsultaEstudiantes();
+            else
+            {
+                MessageBox.Show("No hay estudiantes registrados\nRegistre alguno antes de continuar", "-- AVISO --", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Registro = new RegistroEstudiantes();
+            }
+            Registro.MdiParent = this;
+            Registro.Show();
+        }
+
+        private void gruposToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form ventana = new Form();
+
+            if(BLL.GruposBLL.GetList().Count() > 0)
+                ventana = new ConsultaGrupos();
+            else
+            {
+                var Mensaje = "No hay grupos registrados registre\nalgun grupo para continuar";
+
+                var est = BLL.EstudiantesBLL.GetList().Count();
+
+                if (est == 0)
+                {
+                    Mensaje = "No hay estudiantes registrados y por tal motivo tampoco hay\nestudiantes registrados registre alguno para continuar";
+                    ventana = new RegistroEstudiantes();
+                }
+                else
+                    ventana = new Registros.RegistroGrupos();
+                    
+                MessageBox.Show(Mensaje, "-- AVISO --", MessageBoxButtons.OK, MessageBoxIcon.Information);                
+            }
+
+            ventana.MdiParent = this;
+            ventana.Show();
         }
     }
 }

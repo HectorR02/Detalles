@@ -106,5 +106,54 @@ namespace BLL
             // }
             return resultado;
         }
+
+        public static bool EliminarEstudiante(int estudianteId)
+        {
+            bool resultado = false;
+            using (var conexion = new DetallesDB())
+            {
+                try
+                {
+                    var lista = BuscarGrupos(estudianteId);
+
+                    foreach (var Ge in lista)
+                        conexion.Entry(Ge).State = EntityState.Deleted;
+
+                    conexion.SaveChanges();
+                    resultado = true;
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+            return resultado;
+        }
+
+        public static bool EliminarGrupo(int idGrupo)
+        {
+            bool resultado = false;
+            using (var conexion = new DetallesDB())
+            {
+                try
+                {
+                    var lista = BuscarGrupos(idGrupo);
+
+                    foreach (var Ge in lista)
+                        conexion.Entry(Ge).State = EntityState.Deleted;
+
+                    conexion.SaveChanges();
+                    resultado = true;
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+            return resultado;
+        }
+
     }
 }

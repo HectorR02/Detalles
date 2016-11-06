@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace Detalles
 {
-    public partial class RegistroGrupos : Form
+    public partial class ConsultaGrupos : Form
     {
         private List<Estudiantes> estudiantes;
         public List<GruposEstudiantes> GrupoEstudiante;
 
-        public RegistroGrupos()
+        public ConsultaGrupos()
         {
             InitializeComponent();
             estudiantes = new List<Estudiantes>();
@@ -38,6 +38,7 @@ namespace Detalles
                 string Titulo = "-- Transacción Fallida --";
                 if (BLL.GruposBLL.Eliminar(existente))
                 {
+                    BLL.GruposEstudiantesBLL.EliminarGrupo(IdGrupo);
                     Mensaje = "Grupo eliminado exitosamente";
                     Titulo = "-- Transacción Exitosa --";
                 }
@@ -69,7 +70,8 @@ namespace Detalles
             else
             {
                 MessageBox.Show("Este grupo con el Id " + IdGrupo + " No existe...", "-- Error de Consulta", MessageBoxButtons.OK);
-            }
+                CleanCampos();
+            }            
             IdTextBox.Focus();
         }
 
@@ -81,13 +83,25 @@ namespace Detalles
                     int IdGrupo;
                     int.TryParse(IdTextBox.Text, out IdGrupo);
                     estudiantes.Add(BLL.EstudiantesBLL.Buscar((int)EstudiatesComboBox.SelectedValue));
-                    GrupoEstudiante.Add(new GruposEstudiantes() {
+                    GrupoEstudiante.Add(new GruposEstudiantes()
+                    {
                         Id = 1,
                         EstudianteId = (int)EstudiatesComboBox.SelectedValue,
                         GrupoId = IdGrupo
                     });
                     EstudiantesDataGridView.DataSource = null;
                     EstudiantesDataGridView.DataSource = estudiantes;
+                }
+                else
+                {
+                    MessageBox.Show(this, "No Puedes dejar campos vacíos", "-- AVISO --", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (string.IsNullOrEmpty(NombresTextBox.Text))
+                        NombresTextBox.Focus();
+                    else
+                    {
+                        IdTextBox.Text = (BLL.GruposBLL.UltimoId() + 1).ToString();
+                        IdTextBox.Focus();
+                    }
                 }
             
         }
@@ -113,7 +127,7 @@ namespace Detalles
             int.TryParse(IdTextBox.Text, out IdGrupo);
             string Mensaje = "No se ha podido registrar el grupo";
             string Titulo = "-- Transacción Fallida --";
-            if(BLL.GruposBLL.Buscar(IdGrupo) != null)
+            if(BLL.GruposBLL.Buscar(IdGrupo) == null)
             {
                 if ((BLL.GruposBLL.Insertar(new Grupos() { GrupoId = IdGrupo, Nombre = NombresTextBox.Text }) && BLL.GruposEstudiantesBLL.Insertar(GrupoEstudiante)))
                 {

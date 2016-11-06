@@ -32,7 +32,6 @@ namespace BLL
         public static Estudiantes Buscar(int EstudianteId)
         {
             var est = new Estudiantes();
-            //var conexion = new DetallesDB();
             using (var conexion = new DetallesDB())
             {
                 try
@@ -136,8 +135,8 @@ namespace BLL
             {
                 try
                 {
-                    if(Buscar(1) != null)
-                        UltId = conexion.Grupo.Max(Id => Id.GrupoId);
+                    if (GetList().Count() > 0)
+                        UltId = conexion.Estudiante.Max(Id => Id.EstudianteId);
                 }
                 catch (Exception)
                 {

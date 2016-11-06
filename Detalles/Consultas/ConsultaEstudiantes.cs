@@ -3,17 +3,17 @@ using System.Windows.Forms;
 
 namespace Detalles
 {
-    public partial class RegistroEstudiantes : Form
+    public partial class ConsultaEstudiantes : Form
     {
         private Inicio Padre;
 
-        public RegistroEstudiantes()
+        public ConsultaEstudiantes()
         {
             InitializeComponent();
             CleanCampos();
         }
 
-        public RegistroEstudiantes(Inicio Padre)
+        public ConsultaEstudiantes(Inicio Padre)
         {
             this.Padre = Padre;
             this.MdiParent = Padre;
@@ -62,10 +62,23 @@ namespace Detalles
             {
                 int id;
                 int.TryParse(IdTextBox.Text, out id);
-                if (BLL.GruposBLL.Buscar(id) != null)
+                var lista = BLL.EstudiantesBLL.GetList();
+                if (BLL.EstudiantesBLL.Buscar(id) == null || lista.Count == 0)
                     BLL.EstudiantesBLL.Insertar(new Entidades.Estudiantes() { EstudianteId = id, Nombres = NombresTextBox.Text });
                 else
                     BLL.EstudiantesBLL.Modificar(new Entidades.Estudiantes() { EstudianteId = id, Nombres = NombresTextBox.Text });
+                CleanCampos();
+            }
+            else
+            {
+                MessageBox.Show("No puedes dejar campos vacíos", "-- AVISO --", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (string.IsNullOrEmpty(IdTextBox.Text))
+                {
+                    IdTextBox.Text = (BLL.EstudiantesBLL.UltimoId() + 1).ToString();
+                    IdTextBox.Focus();
+                }
+                else
+                    NombresTextBox.Focus();
             }
         }
 
@@ -77,6 +90,7 @@ namespace Detalles
             int.TryParse(IdTextBox.Text, out Id);
             if (BLL.EstudiantesBLL.Eliminar(BLL.EstudiantesBLL.Buscar(Id)))
             {
+                BLL.GruposEstudiantesBLL.EliminarEstudiante(Id);
                 mensaje = "Se Eliminó correctamente";
                 Titulo = "-- Transaccion Exitosa --";
             }
