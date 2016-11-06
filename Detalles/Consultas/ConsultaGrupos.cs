@@ -112,7 +112,7 @@ namespace Detalles
             NombresTextBox.Clear();
             estudiantes = new List<Estudiantes>();
             EstudiantesDataGridView.DataSource = null;
-            IdTextBox.Text = (BLL.GruposBLL.UltimoId() + 1).ToString();
+            IdTextBox.Text = (BLL.GruposBLL.UltimoId()).ToString();
             IdTextBox.Focus();
         }
 

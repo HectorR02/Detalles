@@ -30,13 +30,10 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.EstudiantesDataGridView = new System.Windows.Forms.DataGridView();
-            this.EstudiatesComboBox = new System.Windows.Forms.ComboBox();
             this.IdTextBox = new System.Windows.Forms.TextBox();
             this.NombresTextBox = new System.Windows.Forms.TextBox();
             this.EstudiantesGroupBox = new System.Windows.Forms.GroupBox();
-            this.AgregarButton = new System.Windows.Forms.Button();
             this.BuscarButton = new System.Windows.Forms.Button();
             this.ImprimirButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.EstudiantesDataGridView)).BeginInit();
@@ -63,16 +60,6 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Nombre";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(10, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 19);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Estudiantes";
-            // 
             // EstudiantesDataGridView
             // 
             this.EstudiantesDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -80,23 +67,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EstudiantesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.EstudiantesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.EstudiantesDataGridView.Location = new System.Drawing.Point(13, 60);
+            this.EstudiantesDataGridView.Location = new System.Drawing.Point(13, 25);
             this.EstudiantesDataGridView.Name = "EstudiantesDataGridView";
-            this.EstudiantesDataGridView.Size = new System.Drawing.Size(514, 196);
+            this.EstudiantesDataGridView.Size = new System.Drawing.Size(514, 231);
             this.EstudiantesDataGridView.TabIndex = 7;
             this.EstudiantesDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // EstudiatesComboBox
-            // 
-            this.EstudiatesComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.EstudiatesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.EstudiatesComboBox.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EstudiatesComboBox.FormattingEnabled = true;
-            this.EstudiatesComboBox.Location = new System.Drawing.Point(96, 25);
-            this.EstudiatesComboBox.Name = "EstudiatesComboBox";
-            this.EstudiatesComboBox.Size = new System.Drawing.Size(329, 23);
-            this.EstudiatesComboBox.TabIndex = 9;
             // 
             // IdTextBox
             // 
@@ -123,10 +98,7 @@
             this.EstudiantesGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.EstudiantesGroupBox.Controls.Add(this.EstudiatesComboBox);
-            this.EstudiantesGroupBox.Controls.Add(this.AgregarButton);
             this.EstudiantesGroupBox.Controls.Add(this.EstudiantesDataGridView);
-            this.EstudiantesGroupBox.Controls.Add(this.label3);
             this.EstudiantesGroupBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EstudiantesGroupBox.Location = new System.Drawing.Point(12, 129);
             this.EstudiantesGroupBox.Name = "EstudiantesGroupBox";
@@ -134,22 +106,6 @@
             this.EstudiantesGroupBox.TabIndex = 12;
             this.EstudiantesGroupBox.TabStop = false;
             this.EstudiantesGroupBox.Text = "ESTUDIANTES";
-            // 
-            // AgregarButton
-            // 
-            this.AgregarButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AgregarButton.FlatAppearance.BorderSize = 0;
-            this.AgregarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AgregarButton.Image = global::Detalles.Properties.Resources.BotonAñadir1;
-            this.AgregarButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.AgregarButton.Location = new System.Drawing.Point(431, 20);
-            this.AgregarButton.Name = "AgregarButton";
-            this.AgregarButton.Size = new System.Drawing.Size(96, 29);
-            this.AgregarButton.TabIndex = 8;
-            this.AgregarButton.Text = "Agregar";
-            this.AgregarButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.AgregarButton.UseVisualStyleBackColor = true;
-            this.AgregarButton.Click += new System.EventHandler(this.AgregarButton_Click);
             // 
             // BuscarButton
             // 
@@ -198,7 +154,6 @@
             this.Text = "Consulta Grupos";
             ((System.ComponentModel.ISupportInitialize)(this.EstudiantesDataGridView)).EndInit();
             this.EstudiantesGroupBox.ResumeLayout(false);
-            this.EstudiantesGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,10 +164,7 @@
         private System.Windows.Forms.Button BuscarButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView EstudiantesDataGridView;
-        private System.Windows.Forms.Button AgregarButton;
-        private System.Windows.Forms.ComboBox EstudiatesComboBox;
         private System.Windows.Forms.TextBox IdTextBox;
         private System.Windows.Forms.TextBox NombresTextBox;
         private System.Windows.Forms.GroupBox EstudiantesGroupBox;

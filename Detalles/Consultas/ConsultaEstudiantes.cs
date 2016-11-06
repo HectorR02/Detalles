@@ -25,7 +25,7 @@ namespace Detalles
             NombresTextBox.Clear();
             GruposDataGridView.DataSource = null;
             GruposGroupBox.Visible = false;
-            IdTextBox.Text = (BLL.EstudiantesBLL.UltimoId()+1).ToString();
+            IdTextBox.Text = (BLL.EstudiantesBLL.UltimoId()).ToString();
             IdTextBox.Focus();
         }
 
