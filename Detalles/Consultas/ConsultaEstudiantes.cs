@@ -98,5 +98,14 @@ namespace Detalles
             MessageBox.Show(mensaje, Titulo, MessageBoxButtons.OK);
             CleanCampos();
         }
+
+        private void ImprimirButton_Click(object sender, EventArgs e)
+        {
+            int Id;
+            int.TryParse(IdTextBox.Text, out Id);
+            var rep = new Reportes.ReporteEstudiantes();
+            rep.EstudianteId = Id;
+            rep.Show();
+        }
     }
 }

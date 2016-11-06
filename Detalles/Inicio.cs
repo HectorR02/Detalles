@@ -39,7 +39,7 @@ namespace Detalles
             if (BLL.EstudiantesBLL.GetList() != null)
             {
                 LimpiarContenedor();
-                RegGrupos = new ConsultaGrupos();
+                RegGrupos = new Registros.RegistroGrupos();
             }
             else
             {

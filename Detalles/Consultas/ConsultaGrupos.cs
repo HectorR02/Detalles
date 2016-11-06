@@ -141,6 +141,15 @@ namespace Detalles
             MessageBox.Show(Mensaje, Titulo, MessageBoxButtons.OK);
             CleanCampos();
         }
+
+        private void ImprimirButton_Click(object sender, EventArgs e)
+        {
+            int IdGrupo;
+            int.TryParse(IdTextBox.Text, out IdGrupo);
+            var ventana = new Reportes.ReporteGrupos();
+            ventana.IdGrupo = IdGrupo;
+            ventana.Show();
+        }
     }
 
 }

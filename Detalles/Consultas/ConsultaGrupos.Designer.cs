@@ -178,6 +178,7 @@
             this.ImprimirButton.Size = new System.Drawing.Size(30, 23);
             this.ImprimirButton.TabIndex = 13;
             this.ImprimirButton.UseVisualStyleBackColor = true;
+            this.ImprimirButton.Click += new System.EventHandler(this.ImprimirButton_Click);
             // 
             // ConsultaGrupos
             // 

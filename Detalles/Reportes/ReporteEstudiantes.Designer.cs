@@ -28,17 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.GruposBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.EstudiantesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.GruposBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EstudiantesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource1.Name = "CargarGrupo";
+            reportDataSource1.Value = this.GruposBindingSource;
+            reportDataSource2.Name = "CargaEstudiante";
+            reportDataSource2.Value = this.EstudiantesBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Detalles.Reportes.Report2.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(555, 412);
             this.reportViewer1.TabIndex = 0;
-            this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
+            this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load_1);
+            // 
+            // GruposBindingSource
+            // 
+            this.GruposBindingSource.DataSource = typeof(Entidades.Grupos);
+            // 
+            // EstudiantesBindingSource
+            // 
+            this.EstudiantesBindingSource.DataSource = typeof(Entidades.Estudiantes);
             // 
             // ReporteEstudiantes
             // 
@@ -49,6 +71,8 @@
             this.Name = "ReporteEstudiantes";
             this.Text = "ReporteEstudiantes";
             this.Load += new System.EventHandler(this.ReporteEstudiantes_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.GruposBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EstudiantesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -56,5 +80,7 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.BindingSource GruposBindingSource;
+        private System.Windows.Forms.BindingSource EstudiantesBindingSource;
     }
 }
